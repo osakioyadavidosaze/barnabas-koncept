@@ -3,14 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banabas Koncept</title>
-    <script>
-        // Redirect to the Next.js app
-        window.location.href = '/';
-    </script>
+    <title>Banabas Koncept - Professional Web Design & Development</title>
+    <meta name="description" content="Professional web design and development services. Modern, responsive websites with stunning user experiences.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="public/images/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <h1>Redirecting to Banabas Koncept...</h1>
-    <p>If you are not redirected, <a href="/">click here</a>.</p>
+    <!-- Header -->
+    <header id="header" class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="public/images/logo.png" alt="Banabas Koncept Logo" class="logo-img">
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <nav id="mobile-nav" class="mobile-nav">
+            <ul class="mobile-nav-list">
+                <li><a href="index.html" class="mobile-nav-link" onclick="toggleMobileMenu()">Home</a></li>
+                <li><a href="portfolio.html" class="mobile-nav-link" onclick="toggleMobileMenu()">Portfolio</a></li>
+                <li><a href="services.html" class="mobile-nav-link" onclick="toggleMobileMenu()">Services</a></li>
+                <li><a href="contact.html" class="mobile-nav-link" onclick="toggleMobileMenu()">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <!-- Floating Elements -->
+            <div class="floating-orb"></div>
+            <div class="floating-orb"></div>
+            <div class="floating-orb"></div>
+            <div class="floating-shape"></div>
+            <div class="floating-shape"></div>
+            <div class="floating-shape"></div>
+
+            <!-- Decorative Rings -->
+            <div class="decorative-ring"></div>
+            <div class="decorative-ring"></div>
+
+            <!-- Particles -->
+            <div class="particles" id="particles"></div>
+        </div>
+
+        <div class="hero-content">
+            <h1 class="hero-title animate-fade-in">Welcome to Banabas Koncept</h1>
+            <p class="hero-subtitle animate-fade-in delay-200">Professional Web Design & Development</p>
+            <p class="hero-description animate-fade-in delay-300">
+                We create stunning, modern websites that drive results. From concept to launch,
+                we deliver exceptional digital experiences that captivate your audience.
+            </p>
+            <div class="cta-buttons animate-fade-in delay-400">
+                <a href="portfolio.html" class="btn btn-solid">View Our Work</a>
+                <a href="contact.html" class="btn">Get Started</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Preview Section -->
+    <section class="services" style="padding: 4rem 0;">
+        <div class="container">
+            <div class="services-header">
+                <h2 class="services-title">Our Services</h2>
+                <p class="services-description">
+                    Comprehensive web solutions tailored to your business needs
+                </p>
+            </div>
+
+            <div class="services-grid" id="services-preview">
+                <!-- Services will be loaded here -->
+            </div>
+
+            <div class="text-center">
+                <a href="services.html" class="btn btn-primary">View All Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Preview Section -->
+    <section class="portfolio" style="padding: 4rem 0; background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);">
+        <div class="container">
+            <div class="portfolio-header">
+                <h2 class="portfolio-title">Recent Projects</h2>
+                <p class="portfolio-description">
+                    Explore our latest work and see how we bring ideas to life
+                </p>
+            </div>
+
+            <div class="portfolio-grid" id="portfolio-preview">
+                <!-- Projects will be loaded here -->
+            </div>
+
+            <div class="text-center">
+                <a href="portfolio.html" class="btn btn-primary">View Full Portfolio</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Banabas Koncept</h3>
+                    <p>Professional web design and development services that deliver results.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="portfolio.html">Portfolio</a>
+                    <a href="services.html">Services</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p id="contact-email">gumbarnabas@gmail.com</p>
+                    <p id="contact-phone">09028147869</p>
+                    <p id="contact-whatsapp">2349028147869</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Banabas Koncept. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

@@ -4,12 +4,116 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services - Banabas Koncept</title>
-    <script>
-        window.location.href = '/services';
-    </script>
+    <meta name="description" content="Professional web development services including design, development, SEO, and maintenance.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="public/images/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <h1>Redirecting to Services...</h1>
-    <p>If you are not redirected, <a href="/services">click here</a>.</p>
+    <!-- Header -->
+    <header id="header" class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="public/images/logo.png" alt="Banabas Koncept Logo" class="logo-img">
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <nav id="mobile-nav" class="mobile-nav">
+            <ul class="mobile-nav-list">
+                <li><a href="index.html" class="mobile-nav-link" onclick="toggleMobileMenu()">Home</a></li>
+                <li><a href="portfolio.html" class="mobile-nav-link" onclick="toggleMobileMenu()">Portfolio</a></li>
+                <li><a href="services.html" class="mobile-nav-link" onclick="toggleMobileMenu()">Services</a></li>
+                <li><a href="contact.html" class="mobile-nav-link" onclick="toggleMobileMenu()">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <div class="services-header">
+                <h1 class="services-title">Our Services</h1>
+                <p class="services-description">
+                    Comprehensive web solutions tailored to your needs. Choose the services that fit your project requirements.
+                </p>
+            </div>
+
+            <!-- Loading State -->
+            <div id="loading" class="loading">
+                <div class="spinner"></div>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="services-grid" id="services-grid" style="display: none;">
+                <!-- Services will be loaded here -->
+            </div>
+
+            <!-- Cart Summary -->
+            <div id="cart-summary" style="display: none;">
+                <div class="container">
+                    <h2>Selected Services</h2>
+                    <div id="cart-items"></div>
+                    <div class="text-center" style="margin-top: 2rem;">
+                        <a href="contact.html" class="btn btn-solid">Proceed to Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Banabas Koncept</h3>
+                    <p>Professional web design and development services that deliver results.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="portfolio.html">Portfolio</a>
+                    <a href="services.html">Services</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p id="contact-email">Loading...</p>
+                    <p id="contact-phone">Loading...</p>
+                    <p id="contact-whatsapp">Loading...</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Banabas Koncept. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/services.js"></script>
 </body>
 </html>
