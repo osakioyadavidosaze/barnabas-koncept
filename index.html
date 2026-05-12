@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Banabas Koncept - Professional Web Design & Development</title>
     <meta name="description" content="Professional web design and development services. Modern, responsive websites with stunning user experiences.">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="public/images/favicon.ico" type="image/x-icon">
-</head>
+    
     <style>
         * {
             margin: 0;
@@ -25,7 +23,6 @@
             margin: 0 auto;
             padding: 0 20px;
         }
-
         /* Header */
         .header {
             background: #000000;
@@ -54,8 +51,7 @@
         .nav-link:hover {
             color: #D4AF37;
         }
-
-        /* ==================== DRAMATIC HERO ==================== */
+        /* Hero */
         .hero {
             position: relative;
             height: 100vh;
@@ -64,8 +60,6 @@
             overflow: hidden;
             background: radial-gradient(circle at center, #1a1a1a 0%, #000000 70%);
         }
-
-        /* Animated Background */
         .hero::before {
             content: '';
             position: absolute;
@@ -75,41 +69,32 @@
             background-size: 300% 300%;
             animation: goldFlow 25s linear infinite;
         }
-
         @keyframes goldFlow {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-
-        /* Floating Golden Orbs */
         .floating-orb {
             position: absolute;
             border-radius: 50%;
             background: radial-gradient(circle, #D4AF37, #b8972e);
-            box-shadow: 0 0 60px #D4AF37,
-                        0 0 120px rgba(212, 175, 55, 0.6);
+            box-shadow: 0 0 60px #D4AF37, 0 0 120px rgba(212, 175, 55, 0.6);
             opacity: 0.25;
             animation: floatOrb 20s infinite linear;
         }
-
         .orb1 { width: 180px; height: 180px; top: 15%; left: 10%; animation-duration: 28s; }
         .orb2 { width: 250px; height: 250px; bottom: 20%; right: 15%; animation-duration: 35s; animation-direction: reverse; }
         .orb3 { width: 120px; height: 120px; top: 40%; right: 20%; animation-duration: 22s; }
-
         @keyframes floatOrb {
             0% { transform: translate(0, 0) rotate(0deg); }
             50% { transform: translate(80px, -80px) rotate(15deg); }
             100% { transform: translate(0, 0) rotate(0deg); }
         }
-
-        /* Particle Container */
         #particles {
             position: absolute;
             inset: 0;
             pointer-events: none;
         }
-
         .hero-content {
             position: relative;
             z-index: 3;
@@ -127,21 +112,6 @@
             from { text-shadow: 0 0 20px rgba(212, 175, 55, 0.5); }
             to { text-shadow: 0 0 60px rgba(212, 175, 55, 0.9), 0 0 100px rgba(212, 175, 55, 0.4); }
         }
-
-        .hero-subtitle {
-            font-size: 1.7rem;
-            margin-bottom: 1.2rem;
-            letter-spacing: 3px;
-            opacity: 0.95;
-        }
-
-        .hero-description {
-            font-size: 1.2rem;
-            margin-bottom: 2.8rem;
-            max-width: 580px;
-            opacity: 0.9;
-        }
-
         .btn {
             display: inline-block;
             padding: 16px 36px;
@@ -158,18 +128,15 @@
         .btn-solid:hover {
             background: #f0c14d;
             transform: scale(1.08) translateY(-5px);
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.7);
         }
-        .btn {
+        .btn-outline {
             border: 2px solid #D4AF37;
             color: #D4AF37;
         }
-        .btn:hover {
+        .btn-outline:hover {
             background: #D4AF37;
             color: #000;
         }
-
-        /* Rest of the site remains the same */
         section { padding: 5.5rem 0; }
         .section-title {
             font-size: 2.7rem;
@@ -177,13 +144,6 @@
             margin-bottom: 1rem;
             color: #D4AF37;
         }
-        .section-subtitle {
-            text-align: center;
-            max-width: 650px;
-            margin: 0 auto 3.5rem;
-            color: #aaaaaa;
-        }
-
         .services-grid, .portfolio-grid, .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -193,28 +153,22 @@
             background: #111111;
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.08);
             transition: all 0.4s;
         }
         .service-card:hover, .project-card:hover, .gallery-item:hover {
             transform: translateY(-12px);
-            box-shadow: 0 20px 35px rgba(212, 175, 55, 0.15);
         }
         .project-card img, .gallery-item img {
             width: 100%;
             height: 260px;
             object-fit: cover;
         }
-        .project-info, .service-card { padding: 1.5rem; }
-        .service-card h3, .project-card h4 { color: #D4AF37; }
-
         .footer {
             background: #000000;
             color: #bbbbbb;
             padding: 4rem 0 2rem;
             border-top: 1px solid #D4AF37;
         }
-        .footer h3 { color: #D4AF37; }
     </style>
 </head>
 <body>
@@ -237,26 +191,22 @@
         </div>
     </header>
 
-    <!-- Dynamic Hero Banner -->
+    <!-- Hero -->
     <section class="hero">
-        <!-- Floating Orbs -->
         <div class="floating-orb orb1"></div>
         <div class="floating-orb orb2"></div>
         <div class="floating-orb orb3"></div>
-
-        <!-- Particles -->
-        <canvas id="particles" width="1920" height="1080"></canvas>
-
+        <canvas id="particles"></canvas>
+        
         <div class="container hero-content">
             <h1 class="hero-title">ELEGANCE REIMAGINED</h1>
             <p class="hero-subtitle">BANABAS KONCEPT</p>
             <p class="hero-description">
-                We craft breathtaking digital experiences where luxury meets innovation. 
-                Your vision. Our masterpiece.
+                We craft breathtaking digital experiences where luxury meets innovation.
             </p>
             <div>
                 <a href="#" class="btn btn-solid">Explore Our Work</a>
-                <a href="#" class="btn">Begin Your Journey</a>
+                <a href="#" class="btn btn-outline">Begin Your Journey</a>
             </div>
         </div>
     </section>
@@ -266,7 +216,6 @@
         <div class="container">
             <h2 class="section-title">Our Services</h2>
             <p class="section-subtitle">Premium digital solutions crafted with excellence</p>
-            
             <div class="services-grid">
                 <div class="service-card">
                     <h3>Custom Web Design</h3>
@@ -284,32 +233,28 @@
         </div>
     </section>
 
-    <!-- Portfolio & Gallery remain the same as before -->
+    <!-- Portfolio -->
     <section>
         <div class="container">
             <h2 class="section-title">Recent Projects</h2>
-            <p class="section-subtitle">Showcasing our finest work</p>
-            <div class="portfolio-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:2rem;">
-                <div class="project-card"><img src="https://picsum.photos/id/1015/600/400" alt=""><div class="project-info"><h4>Fashion Empire</h4><p>Premium e-commerce</p></div></div>
-                <div class="project-card"><img src="https://picsum.photos/id/201/600/400" alt=""><div class="project-info"><h4>TechVision</h4><p>Modern SaaS platform</p></div></div>
-                <div class="project-card"><img src="https://picsum.photos/id/237/600/400" alt=""><div class="project-info"><h4>Luxury Restaurant</h4><p>Elegant brand website</p></div></div>
+            <div class="portfolio-grid">
+                <div class="project-card">
+                    <img src="https://picsum.photos/id/1015/600/400" alt="">
+                    <div class="project-info"><h4>Fashion Empire</h4><p>Premium e-commerce</p></div>
+                </div>
+                <div class="project-card">
+                    <img src="https://picsum.photos/id/201/600/400" alt="">
+                    <div class="project-info"><h4>TechVision</h4><p>Modern SaaS platform</p></div>
+                </div>
+                <div class="project-card">
+                    <img src="https://picsum.photos/id/237/600/400" alt="">
+                    <div class="project-info"><h4>Luxury Restaurant</h4><p>Elegant brand website</p></div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section style="background:#0f0f0f;">
-        <div class="container">
-            <h2 class="section-title">Gallery</h2>
-            <p class="section-subtitle">Moments of design excellence</p>
-            <div class="gallery-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:1.5rem;">
-                <div class="gallery-item"><img src="https://picsum.photos/id/1016/600/400" alt=""></div>
-                <div class="gallery-item"><img src="https://picsum.photos/id/133/600/400" alt=""></div>
-                <div class="gallery-item"><img src="https://picsum.photos/id/201/600/400" alt=""></div>
-                <div class="gallery-item"><img src="https://picsum.photos/id/251/600/400" alt=""></div>
-            </div>
-        </div>
-    </section>
-
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:2rem;">
@@ -324,68 +269,63 @@
                     <p>WhatsApp: +234 902 814 7869</p>
                 </div>
             </div>
-            <div style="text-align:center; margin-top:3rem; padding-top:2rem; border-top:1px solid #222;">
-                <p>&copy; 2026 Banabas Koncept. All Rights Reserved.</p>
-            </div>
+            <p style="text-align:center; margin-top:3rem; padding-top:2rem; border-top:1px solid #222;">
+                &copy; 2026 Banabas Koncept. All Rights Reserved.
+            </p>
         </div>
     </footer>
 
     <!-- Particle Script -->
     <script>
         const canvas = document.getElementById('particles');
-        const ctx = canvas.getContext('2d');
-        
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-
-        const particles = [];
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 3 + 1;
-                this.speedX = Math.random() * 0.5 - 0.25;
-                this.speedY = Math.random() * 0.5 - 0.25;
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
             }
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-            }
-            draw() {
-                ctx.fillStyle = '#D4AF37';
-                ctx.globalAlpha = 0.6;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
 
-        for (let i = 0; i < 80; i++) {
-            particles.push(new Particle());
-        }
-
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let i = 0; i < particles.length; i++) {
-                particles[i].update();
-                particles[i].draw();
+            const particles = [];
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.size = Math.random() * 3 + 1;
+                    this.speedX = Math.random() * 0.5 - 0.25;
+                    this.speedY = Math.random() * 0.5 - 0.25;
+                }
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                    if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                    if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+                }
+                draw() {
+                    ctx.fillStyle = '#D4AF37';
+                    ctx.globalAlpha = 0.6;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
             }
-            requestAnimationFrame(animateParticles);
-        }
-        animateParticles();
 
-          
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="js/config.js"></script>
-    <script src="js/utils.js"></script>
-    <script src="js/components.js"></script>
-    <script src="js/main.js"></script>
+            for (let i = 0; i < 80; i++) {
+                particles.push(new Particle());
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (let p of particles) {
+                    p.update();
+                    p.draw();
+                }
+                requestAnimationFrame(animate);
+            }
+            animate();
+        }
     </script>
 </body>
 </html>
