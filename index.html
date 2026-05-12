@@ -336,61 +336,39 @@
     </footer>
 
     <!-- Particle Script -->
+      <!-- Dynamic JavaScript Loader -->
     <script>
-        const canvas = document.getElementById('particles');
-        const ctx = canvas.getContext('2d');
-        
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
+        // === CONFIGURE YOUR SCRIPTS HERE ===
+        const scripts = [
+            "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2",
+            // Add more CDN links below:
+            // "https://cdn.jsdelivr.net/gh/yourusername/repo/js/config.js",
+            // "https://cdn.jsdelivr.net/gh/yourusername/repo/js/utils.js",
+            // "https://cdn.jsdelivr.net/gh/yourusername/repo/js/components.js",
+            // "https://cdn.jsdelivr.net/gh/yourusername/repo/js/main.js"
+        ];
 
-        const particles = [];
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 3 + 1;
-                this.speedX = Math.random() * 0.5 - 0.25;
-                this.speedY = Math.random() * 0.5 - 0.25;
+        // Load scripts dynamically in sequence
+        async function loadScripts() {
+            for (const src of scripts) {
+                try {
+                    await new Promise((resolve, reject) => {
+                        const script = document.createElement('script');
+                        script.src = src;
+                        script.async = false;        // Set to false to load in order
+                        script.onload = resolve;
+                        script.onerror = () => reject(new Error(`Failed to load: ${src}`));
+                        document.body.appendChild(script);
+                    });
+                } catch (err) {
+                    console.error(err);
+                }
             }
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-            }
-            draw() {
-                ctx.fillStyle = '#D4AF37';
-                ctx.globalAlpha = 0.6;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
+            console.log('✅ All scripts loaded successfully');
         }
 
-        for (let i = 0; i < 80; i++) {
-            particles.push(new Particle());
-        }
-
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let i = 0; i < particles.length; i++) {
-                particles[i].update();
-                particles[i].draw();
-            }
-            requestAnimationFrame(animateParticles);
-        }
-        animateParticles();
-
-          
-   <!-- Place these just before the closing </body> tag -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="js/config.js"></script>
-<script src="js/utils.js"></script>
-<script src="js/components.js"></script>
-<script src="js/main.js"></script>
+        // Start loading
+        loadScripts();
+    </script>
 </body>
 </html>
