@@ -8,152 +8,384 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="public/images/favicon.ico" type="image/x-icon">
 </head>
-<body>
-    <!-- Header -->
-    <header id="header" class="header">
-        <div class="container">
-            <a href="index.html" class="logo">
-                <img src="public/images/logo.png" alt="Banabas Koncept Logo" class="logo-img">
-            </a>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #e0e0e0;
+            background: #0a0a0a;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-            <!-- Desktop Navigation -->
-            <nav class="nav">
-                <ul class="nav-list">
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
-                    <li><a href="services.html" class="nav-link">Services</a></li>
-                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+        /* Header */
+        .header {
+            background: #000000;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.2rem 20px;
+        }
+        .logo h2 {
+            color: #D4AF37;
+            font-size: 1.9rem;
+            font-weight: 700;
+        }
+        .nav-link {
+            text-decoration: none;
+            color: #e0e0e0;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-link:hover {
+            color: #D4AF37;
+        }
+
+        /* ==================== DRAMATIC HERO ==================== */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000000 70%);
+        }
+
+        /* Animated Background */
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, #D4AF37 0%, transparent 50%, #D4AF37 100%);
+            opacity: 0.08;
+            background-size: 300% 300%;
+            animation: goldFlow 25s linear infinite;
+        }
+
+        @keyframes goldFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating Golden Orbs */
+        .floating-orb {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, #D4AF37, #b8972e);
+            box-shadow: 0 0 60px #D4AF37,
+                        0 0 120px rgba(212, 175, 55, 0.6);
+            opacity: 0.25;
+            animation: floatOrb 20s infinite linear;
+        }
+
+        .orb1 { width: 180px; height: 180px; top: 15%; left: 10%; animation-duration: 28s; }
+        .orb2 { width: 250px; height: 250px; bottom: 20%; right: 15%; animation-duration: 35s; animation-direction: reverse; }
+        .orb3 { width: 120px; height: 120px; top: 40%; right: 20%; animation-duration: 22s; }
+
+        @keyframes floatOrb {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(80px, -80px) rotate(15deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
+        }
+
+        /* Particle Container */
+        #particles {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 780px;
+        }
+        .hero-title {
+            font-size: 4.2rem;
+            line-height: 1.05;
+            margin-bottom: 1rem;
+            color: #D4AF37;
+            text-shadow: 0 0 40px rgba(212, 175, 55, 0.6);
+            animation: titleGlow 4s ease-in-out infinite alternate;
+        }
+        @keyframes titleGlow {
+            from { text-shadow: 0 0 20px rgba(212, 175, 55, 0.5); }
+            to { text-shadow: 0 0 60px rgba(212, 175, 55, 0.9), 0 0 100px rgba(212, 175, 55, 0.4); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.7rem;
+            margin-bottom: 1.2rem;
+            letter-spacing: 3px;
+            opacity: 0.95;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: 2.8rem;
+            max-width: 580px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.4s;
+            margin-right: 15px;
+        }
+        .btn-solid {
+            background: #D4AF37;
+            color: #000;
+        }
+        .btn-solid:hover {
+            background: #f0c14d;
+            transform: scale(1.08) translateY(-5px);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.7);
+        }
+        .btn {
+            border: 2px solid #D4AF37;
+            color: #D4AF37;
+        }
+        .btn:hover {
+            background: #D4AF37;
+            color: #000;
+        }
+
+        /* Rest of the site remains the same */
+        section { padding: 5.5rem 0; }
+        .section-title {
+            font-size: 2.7rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #D4AF37;
+        }
+        .section-subtitle {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 3.5rem;
+            color: #aaaaaa;
+        }
+
+        .services-grid, .portfolio-grid, .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .service-card, .project-card, .gallery-item {
+            background: #111111;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.08);
+            transition: all 0.4s;
+        }
+        .service-card:hover, .project-card:hover, .gallery-item:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 35px rgba(212, 175, 55, 0.15);
+        }
+        .project-card img, .gallery-item img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+        }
+        .project-info, .service-card { padding: 1.5rem; }
+        .service-card h3, .project-card h4 { color: #D4AF37; }
+
+        .footer {
+            background: #000000;
+            color: #bbbbbb;
+            padding: 4rem 0 2rem;
+            border-top: 1px solid #D4AF37;
+        }
+        .footer h3 { color: #D4AF37; }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo">
+                <h2>Banabas Koncept</h2>
+            </a>
+            <nav>
+                <ul style="display:flex; gap:2rem; list-style:none;">
+                    <li><a href="#" class="nav-link">Home</a></li>
+                    <li><a href="#" class="nav-link">Portfolio</a></li>
+                    <li><a href="#" class="nav-link">Services</a></li>
+                    <li><a href="#" class="nav-link">Gallery</a></li>
+                    <li><a href="#" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
-
-            <!-- Mobile Menu Button -->
-            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
-                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
-            </button>
         </div>
-
-        <!-- Mobile Navigation -->
-        <nav id="mobile-nav" class="mobile-nav">
-            <ul class="mobile-nav-list">
-                <li><a href="index.html" class="mobile-nav-link" onclick="toggleMobileMenu()">Home</a></li>
-                <li><a href="portfolio.html" class="mobile-nav-link" onclick="toggleMobileMenu()">Portfolio</a></li>
-                <li><a href="services.html" class="mobile-nav-link" onclick="toggleMobileMenu()">Services</a></li>
-                <li><a href="contact.html" class="mobile-nav-link" onclick="toggleMobileMenu()">Contact</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Dynamic Hero Banner -->
     <section class="hero">
-        <div class="hero-bg">
-            <!-- Floating Elements -->
-            <div class="floating-orb"></div>
-            <div class="floating-orb"></div>
-            <div class="floating-orb"></div>
-            <div class="floating-shape"></div>
-            <div class="floating-shape"></div>
-            <div class="floating-shape"></div>
+        <!-- Floating Orbs -->
+        <div class="floating-orb orb1"></div>
+        <div class="floating-orb orb2"></div>
+        <div class="floating-orb orb3"></div>
 
-            <!-- Decorative Rings -->
-            <div class="decorative-ring"></div>
-            <div class="decorative-ring"></div>
+        <!-- Particles -->
+        <canvas id="particles" width="1920" height="1080"></canvas>
 
-            <!-- Particles -->
-            <div class="particles" id="particles"></div>
-        </div>
-
-        <div class="hero-content">
-            <h1 class="hero-title animate-fade-in">Welcome to Banabas Koncept</h1>
-            <p class="hero-subtitle animate-fade-in delay-200">Professional Web Design & Development</p>
-            <p class="hero-description animate-fade-in delay-300">
-                We create stunning, modern websites that drive results. From concept to launch,
-                we deliver exceptional digital experiences that captivate your audience.
+        <div class="container hero-content">
+            <h1 class="hero-title">ELEGANCE REIMAGINED</h1>
+            <p class="hero-subtitle">BANABAS KONCEPT</p>
+            <p class="hero-description">
+                We craft breathtaking digital experiences where luxury meets innovation. 
+                Your vision. Our masterpiece.
             </p>
-            <div class="cta-buttons animate-fade-in delay-400">
-                <a href="portfolio.html" class="btn btn-solid">View Our Work</a>
-                <a href="contact.html" class="btn">Get Started</a>
+            <div>
+                <a href="#" class="btn btn-solid">Explore Our Work</a>
+                <a href="#" class="btn">Begin Your Journey</a>
             </div>
         </div>
     </section>
 
-    <!-- Services Preview Section -->
-    <section class="services" style="padding: 4rem 0;">
+    <!-- Services -->
+    <section style="background:#0f0f0f;">
         <div class="container">
-            <div class="services-header">
-                <h2 class="services-title">Our Services</h2>
-                <p class="services-description">
-                    Comprehensive web solutions tailored to your business needs
-                </p>
-            </div>
-
-            <div class="services-grid" id="services-preview">
-                <!-- Services will be loaded here -->
-            </div>
-
-            <div class="text-center">
-                <a href="services.html" class="btn btn-primary">View All Services</a>
+            <h2 class="section-title">Our Services</h2>
+            <p class="section-subtitle">Premium digital solutions crafted with excellence</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Custom Web Design</h3>
+                    <p>Stunning, modern designs tailored to elevate your brand identity.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Web Development</h3>
+                    <p>Powerful, fast, and secure websites built with cutting-edge technology.</p>
+                </div>
+                <div class="service-card">
+                    <h3>E-commerce Solutions</h3>
+                    <p>Luxury online stores designed to convert and impress.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Preview Section -->
-    <section class="portfolio" style="padding: 4rem 0; background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);">
+    <!-- Portfolio & Gallery remain the same as before -->
+    <section>
         <div class="container">
-            <div class="portfolio-header">
-                <h2 class="portfolio-title">Recent Projects</h2>
-                <p class="portfolio-description">
-                    Explore our latest work and see how we bring ideas to life
-                </p>
-            </div>
-
-            <div class="portfolio-grid" id="portfolio-preview">
-                <!-- Projects will be loaded here -->
-            </div>
-
-            <div class="text-center">
-                <a href="portfolio.html" class="btn btn-primary">View Full Portfolio</a>
+            <h2 class="section-title">Recent Projects</h2>
+            <p class="section-subtitle">Showcasing our finest work</p>
+            <div class="portfolio-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:2rem;">
+                <div class="project-card"><img src="https://picsum.photos/id/1015/600/400" alt=""><div class="project-info"><h4>Fashion Empire</h4><p>Premium e-commerce</p></div></div>
+                <div class="project-card"><img src="https://picsum.photos/id/201/600/400" alt=""><div class="project-info"><h4>TechVision</h4><p>Modern SaaS platform</p></div></div>
+                <div class="project-card"><img src="https://picsum.photos/id/237/600/400" alt=""><div class="project-info"><h4>Luxury Restaurant</h4><p>Elegant brand website</p></div></div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <section style="background:#0f0f0f;">
+        <div class="container">
+            <h2 class="section-title">Gallery</h2>
+            <p class="section-subtitle">Moments of design excellence</p>
+            <div class="gallery-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:1.5rem;">
+                <div class="gallery-item"><img src="https://picsum.photos/id/1016/600/400" alt=""></div>
+                <div class="gallery-item"><img src="https://picsum.photos/id/133/600/400" alt=""></div>
+                <div class="gallery-item"><img src="https://picsum.photos/id/201/600/400" alt=""></div>
+                <div class="gallery-item"><img src="https://picsum.photos/id/251/600/400" alt=""></div>
+            </div>
+        </div>
+    </section>
+
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:2rem;">
+                <div>
                     <h3>Banabas Koncept</h3>
-                    <p>Professional web design and development services that deliver results.</p>
+                    <p>Creating digital luxury and exceptional user experiences.</p>
                 </div>
-
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <a href="index.html">Home</a>
-                    <a href="portfolio.html">Portfolio</a>
-                    <a href="services.html">Services</a>
-                    <a href="contact.html">Contact</a>
-                </div>
-
-                <div class="footer-section">
-                    <h3>Contact Info</h3>
-                    <p id="contact-email">gumbarnabas@gmail.com</p>
-                    <p id="contact-phone">09028147869</p>
-                    <p id="contact-whatsapp">2349028147869</p>
+                <div>
+                    <h3>Contact</h3>
+                    <p>Email: gumbarnabas@gmail.com</p>
+                    <p>Phone: 09028147869</p>
+                    <p>WhatsApp: +234 902 814 7869</p>
                 </div>
             </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2024 Banabas Koncept. All rights reserved.</p>
+            <div style="text-align:center; margin-top:3rem; padding-top:2rem; border-top:1px solid #222;">
+                <p>&copy; 2026 Banabas Koncept. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- Particle Script -->
+    <script>
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        const particles = [];
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 3 + 1;
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.speedY = Math.random() * 0.5 - 0.25;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+            draw() {
+                ctx.fillStyle = '#D4AF37';
+                ctx.globalAlpha = 0.6;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < 80; i++) {
+            particles.push(new Particle());
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+            }
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+          
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/config.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/components.js"></script>
     <script src="js/main.js"></script>
+    </script>
 </body>
 </html>
