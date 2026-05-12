@@ -1145,3 +1145,57 @@ body {
     object-fit: cover;
     border-radius: 8px; /* Optional: rounds image corners */
 }
+
+/* ==============================================
+   Banabas Koncept - Graphics Gallery Section
+   ============================================== */
+.graphics-gallery {
+    padding: 5rem 0;
+    background-color: transparent; /* Seamlessly matches layout background */
+}
+
+.gallery-header-block {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.gallery-main-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.gallery-sub-text {
+    font-size: 1.1rem;
+    color: #666;
+}
+
+.custom-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.custom-gallery-item {
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.custom-gallery-item img {
+    width: 100%;
+    height: 240px; /* Fixed display height for neat rows */
+    display: block;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.custom-gallery-item:hover img {
+    transform: scale(1.05); /* Soft zoom effect on hover */
+}
