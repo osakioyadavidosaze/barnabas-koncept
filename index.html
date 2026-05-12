@@ -9,20 +9,22 @@
     <link rel="icon" href="public/images/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <!-- Header -->
-   <header id="header" class="header">
-    <div class="container">
-        <!-- Logo Link Wrapper -->
-        <a href="index.html" class="logo">
-             <img src="LOGO.png" alt="Banabas Koncept Logo" class="logo-img">
+  <header id="header" class="header" style="width: 100%; box-sizing: border-box;">
+    <div class="container" style="display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 1rem; box-sizing: border-box;">
+        
+        <!-- Logo Link -->
+        <a href="index.html" class="logo" style="display: inline-block; text-decoration: none;">
+             <img src="LOGO.png" alt="Banabas Koncept Logo" class="logo-img" style="display: block; max-height: 50px; width: auto;">
         </a>
 
-        <!-- Gallery Grid (Separated from the logo link) -->
-        <div class="gallery-grid" style="display: grid !important; grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)) !important; gap: 0.5rem !important;">
-            <!-- Your gallery images or items go here -->
+        <!-- Gallery Grid -->
+        <div class="gallery-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); gap: 0.5rem; flex-grow: 1; margin-left: 2rem;">
+            <!-- Insert your grid items here -->
         </div>
+
     </div>
 </header>
+
          <!-- Desktop Navigation -->
             <nav class="nav">
                 <ul class="nav-list">
