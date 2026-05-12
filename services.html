@@ -10,7 +10,23 @@
 </head>
 <body>
     <!-- Header -->
-   <header id="header" class="header" style="width: 100%; box-sizing: border-box; background-color: #fff; position: relative;">
+  <style>
+    /* Desktop layouts default, hide mobile elements */
+    .mobile-menu-btn { display: none !important; }
+    .mobile-nav { display: none !important; }
+    .nav { display: flex !important; }
+
+    /* Mobile breakdown: Activates under 768px screen width */
+    @media (max-width: 768px) {
+        .nav { display: none !important; }
+        .mobile-menu-btn { display: block !important; }
+        
+        /* This rule controls the toggle when the class 'open' is applied */
+        .mobile-nav.open { display: block !important; }
+    }
+</style>
+
+<header id="header" class="header" style="width: 100%; box-sizing: border-box; background-color: #fff; position: relative;">
     <div class="container" style="display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 1rem; box-sizing: border-box;">
         
         <!-- Logo Link -->
@@ -24,7 +40,7 @@
         </div>
 
         <!-- Desktop Navigation -->
-        <nav class="nav" style="display: flex; align-items: center;">
+        <nav class="nav">
             <ul class="nav-list" style="display: flex; list-style: none; margin: 0; padding: 0; gap: 1.5rem;">
                 <li><a href="index.html" class="nav-link" style="text-decoration: none; color: #333; font-weight: 500;">Home</a></li>
                 <li><a href="portfolio.html" class="nav-link" style="text-decoration: none; color: #333; font-weight: 500;">Portfolio</a></li>
@@ -33,8 +49,8 @@
             </ul>
         </nav>
 
-        <!-- Mobile Menu Button -->
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" style="display: none; background: none; border: none; cursor: pointer; color: #333; padding: 0.25rem;">
+        <!-- Mobile Menu Button (FIXED: Uses class switching) -->
+        <button class="mobile-menu-btn" onclick="document.getElementById('mobile-nav').classList.toggle('open')" style="background: none; border: none; cursor: pointer; color: #333; padding: 0.25rem;">
             <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
@@ -42,16 +58,15 @@
     </div>
 
     <!-- Mobile Navigation Menu -->
-    <nav id="mobile-nav" class="mobile-nav" style="display: none; width: 100%; background-color: #f9f9f9; border-top: 1px solid #eee; position: absolute; top: 100%; left: 0; z-index: 999;">
+    <nav id="mobile-nav" class="mobile-nav" style="width: 100%; background-color: #f9f9f9; border-top: 1px solid #eee; position: absolute; top: 100%; left: 0; z-index: 999;">
         <ul class="mobile-nav-list" style="list-style: none; margin: 0; padding: 1rem; display: flex; flex-direction: column; gap: 1rem;">
-            <li><a href="index.html" class="mobile-nav-link" onclick="toggleMobileMenu()" style="text-decoration: none; color: #333; display: block; width: 100%;">Home</a></li>
-            <li><a href="portfolio.html" class="mobile-nav-link" onclick="toggleMobileMenu()" style="text-decoration: none; color: #333; display: block; width: 100%;">Portfolio</a></li>
-            <li><a href="services.html" class="mobile-nav-link" onclick="toggleMobileMenu()" style="text-decoration: none; color: #333; display: block; width: 100%;">Services</a></li>
-            <li><a href="contact.html" class="mobile-nav-link" onclick="toggleMobileMenu()" style="text-decoration: none; color: #333; display: block; width: 100%;">Contact</a></li>
+            <li><a href="index.html" class="mobile-nav-link" style="text-decoration: none; color: #333; display: block; width: 100%;">Home</a></li>
+            <li><a href="portfolio.html" class="mobile-nav-link" style="text-decoration: none; color: #333; display: block; width: 100%;">Portfolio</a></li>
+            <li><a href="services.html" class="mobile-nav-link" style="text-decoration: none; color: #333; display: block; width: 100%;">Services</a></li>
+            <li><a href="contact.html" class="mobile-nav-link" style="text-decoration: none; color: #333; display: block; width: 100%;">Contact</a></li>
         </ul>
     </nav>
 </header>
-
     <!-- Services Section -->
     <section class="services">
         <div class="container">
